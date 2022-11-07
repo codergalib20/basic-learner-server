@@ -1,0 +1,32 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #111;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  justify-content: center;
+}
+.box {
+  border: 8px solid #e83a3b;
+  border-radius: 8px;
+  border-radius: 8px;
+  padding: 4rem;
+}
+h1 {
+  font-size: 12rem;
+  font-weight: 800;
+  color: #e83a3b;
+}
+p {
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: right;
+}
