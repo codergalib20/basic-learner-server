@@ -52,3 +52,7 @@
 20221108	03:50:01	b4b23fc0-51f4-4ab7-bebf-3c7066aeaee3	GET	/api/v1/members	undefined
 20221108	03:50:11	387d4a67-650e-428a-b036-70b9700f4641	GET	/api/v1/members	undefined
 20221108	03:51:46	f9609daa-9d46-482a-9689-d21cc6d41fc9	GET	/api/v1/members	undefined
+20221116	15:11:03	7da2a92a-ed9e-4af6-8a55-38ea99b658bb	GET	//api/v1/vocabulary	undefined
+20221116	15:11:09	8e609663-5bbd-4097-b902-c70f4885dfd7	GET	/api/v1/vocabulary	undefined
+20221116	15:20:43	f5e1173a-aff0-430e-ad57-6cbeb635ac2a	POST	/api/v1/vocabulary	undefined
+20221116	15:21:13	3b042ee2-0624-4b2c-b735-b7a75d79c83a	GET	/api/v1/vocabulary	undefined

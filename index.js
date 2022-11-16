@@ -7,7 +7,6 @@ const connectDB = require("./config/dbConnect");
 const colors = require("colors");
 const { logger, logEvents } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
-
 // --------
 // --------------
 // ---------------------
@@ -24,7 +23,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 connectDB();
 colors.enable();
-
 // --------
 // --------------
 // ---------------------
@@ -39,7 +37,7 @@ colors.enable();
 app.use("/", require("./routes/root"));
 // All Routes of Version One - v1
 app.use("/api/v1", require("./routes/members/members.route"));
-
+app.use("/api/v1/vocabulary", require("./routes/vocabulary/vocabulary.route"));
 // --------
 // --------------
 // ---------------------
@@ -62,10 +60,8 @@ app.all("*", (req, res) => {
     res.type("txt".send("404 Not Found!"));
   }
 });
-
 // Handle Error
 app.use(errorHandler);
-
 // --------
 // --------------
 // ---------------------

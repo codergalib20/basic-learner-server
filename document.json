@@ -1,0 +1,22 @@
+{
+  "vocabulary": "hello",
+  "description": "This word is something something something",
+  "synonyms": {
+    "words": ["hello", "gello", "bolo"],
+    "grammer": [
+      {
+        "title": "verb",
+        "grammer": "something",
+        "describe": "describe about the grammer and words",
+        "words": ["hello", "bolo"]
+      }
+    ]
+  },
+  "pronunciation": [
+    {
+      "record": "your pronunciation recorded file url",
+      "describe": "Why learner need to follow this pronuciation"
+    }
+  ],
+  "tags": ["hello", "word", "english", "vocabulary"]
+}
