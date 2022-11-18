@@ -17,6 +17,10 @@ const grammerSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    tags: {
+      type: [String],
+      required: [true, "You must need to add relative words"],
+    },
   },
   { timestamps: true }
 );

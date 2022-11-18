@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const path = require("path");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const connectDB = require("./config/dbConnect");
 const colors = require("colors");
 const { logger, logEvents } = require("./middleware/logger");
@@ -18,6 +19,7 @@ const errorHandler = require("./middleware/errorHandler");
 // --------
 
 // User Middlewares
+app.use(cors());
 app.use(logger);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
