@@ -38,6 +38,7 @@ app.use("/", require("./routes/root"));
 // All Routes of Version One - v1
 app.use("/api/v1", require("./routes/members/members.route"));
 app.use("/api/v1/vocabulary", require("./routes/vocabulary/vocabulary.route"));
+app.use("/api/v1/grammer", require("./routes/grammer/grammer.route"));
 // --------
 // --------------
 // ---------------------
@@ -87,3 +88,6 @@ mongoose.connection.on("error", (err) => {
     "mongoErrLog.log"
   );
 });
+
+// API LIVE
+// https://basic-learner-server.vercel.app/
