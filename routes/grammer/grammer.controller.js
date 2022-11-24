@@ -30,6 +30,22 @@ const getAllGrammer = async (req, res) => {
     });
   }
 };
+const getAllGrammarTitle = async (req, res) => {
+  console.log(req.body);
+  try {
+    const data = await Grammer.find({ ...req.body });
+    console.log(data);
+    res.status(200).json({
+      message: "Loaded all grammer",
+      data,
+    });
+  } catch (err) {
+    res.status(404).json({
+      message: "That was server error",
+      error: err,
+    });
+  }
+};
 const getAGrammer = async (req, res) => {
   try {
     const data = await Grammer.findOne({ _id: req.params.id });
@@ -86,4 +102,5 @@ module.exports = {
   getAGrammer,
   updateGrammer,
   deleteGrammer,
+  getAllGrammarTitle,
 };

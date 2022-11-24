@@ -6,9 +6,11 @@ const {
   getAGrammer,
   updateGrammer,
   deleteGrammer,
+  getAllGrammarTitle,
 } = require("./grammer.controller");
 
 router.route("/").post(createGrammer).get(getAllGrammer);
+router.route("/title").post(getAllGrammarTitle);
 router
   .route("/:id")
   .get(getAGrammer)
