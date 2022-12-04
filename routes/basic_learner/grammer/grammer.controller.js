@@ -1,4 +1,4 @@
-const Grammer = require("../../models/grammer.model");
+const Grammer = require("../../../models/basic_learner/grammer.model");
 
 const createGrammer = async (req, res) => {
   try {

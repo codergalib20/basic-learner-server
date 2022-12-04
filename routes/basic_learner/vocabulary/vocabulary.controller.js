@@ -1,4 +1,4 @@
-const Vocabulary = require("../../models/vocabulary.model");
+const Vocabulary = require("../../../models/basic_learner/vocabulary.model");
 
 // Create a new Vocabulary
 const addAVocabulary = async (req, res) => {

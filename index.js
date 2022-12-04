@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 connectDB();
 colors.enable();
-// --------
+
+// -------- STARTING ALL ROUTES FROM HERE
 // --------------
 // ---------------------
 // --------------------------
@@ -39,9 +40,7 @@ colors.enable();
 app.use("/", require("./routes/root"));
 // All Routes of Version One - v1
 app.use("/api/v1", require("./routes/members/members.route"));
-app.use("/api/v1/vocabulary", require("./routes/vocabulary/vocabulary.route"));
-app.use("/api/v1/grammer", require("./routes/grammer/grammer.route"));
-// --------
+// -------- FOR BASIC LEARNER ROUTES
 // --------------
 // ---------------------
 // --------------------------
@@ -50,7 +49,28 @@ app.use("/api/v1/grammer", require("./routes/grammer/grammer.route"));
 // ---------------------
 // --------------
 // --------
-
+app.use(
+  "/api/v1/vocabulary",
+  require("./routes/basic_learner/vocabulary/vocabulary.route")
+);
+app.use(
+  "/api/v1/grammer",
+  require("./routes/basic_learner/grammer/grammer.route")
+);
+app.use("/api/v1/birds", require("./routes/basic_learner/birds/birds.route"));
+app.use(
+  "/api/v1/animals",
+  require("./routes/basic_learner/animales/animals.route")
+);
+// -------- fOR 404 ROUTES ERROR
+// --------------
+// ---------------------
+// --------------------------
+// -------------------------------
+// --------------------------
+// ---------------------
+// --------------
+// --------
 // Not Found Or 404 error Page
 app.all("*", (req, res) => {
   console.log(req);
