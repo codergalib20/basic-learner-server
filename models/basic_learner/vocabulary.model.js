@@ -35,6 +35,11 @@ const vocabularySchema = new mongoose.Schema(
         },
       },
     ],
+    slug: {
+      required: true,
+      type: String,
+      trim: true,
+    },
   },
   {
     timestamps: true,

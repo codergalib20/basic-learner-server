@@ -107,6 +107,7 @@ const deleteGrammer = async (req, res) => {
     });
   }
 };
+// Get one by slug
 const getOneBySlug = async (req, res) => {
   try {
     const { slug } = req.params;
