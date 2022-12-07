@@ -17,15 +17,15 @@ const createBird = async (req, res) => {
     // create path by name of bird
     let path = name.toLowerCase().replace(/[^a-zA-Z]/g, "-");
     // check if path already exist
-    const exastingPath = await Bird.findOne({ path });
+    const exastingPath = await Bird.findOne({ slug: path });
     if (exastingPath) {
-      path = path + "-" + Math.floor(Math.random() * 1000);
+      path = Math.floor(Math.random() * 1000) + "_" + path;
     }
     // Create bird object
     const newBird = new Bird({
       name,
       image,
-      path,
+      slug: path,
       description,
     });
     // Save to database and send response

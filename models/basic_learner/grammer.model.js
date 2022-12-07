@@ -21,6 +21,11 @@ const grammerSchema = new mongoose.Schema(
       type: [String],
       required: [true, "You must need to add relative words"],
     },
+    slug: {
+      required: true,
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true }
 );

@@ -18,15 +18,15 @@ const createAnimal = async (req, res) => {
     // create path by name of Animal
     let path = name.toLowerCase().replace(/[^a-zA-Z]/g, "-");
     // check if path already exist
-    const exastingPath = await Animal.findOne({ path });
+    const exastingPath = await Animal.findOne({ slug: path });
     if (exastingPath) {
-      path = path + "-" + Math.floor(Math.random() * 1000);
+      path = Math.floor(Math.random() * 1000) + "_" + path;
     }
     // Create Animal object
     const newAnimal = new Animal({
       name,
       image,
-      path,
+      slug: path,
       description,
     });
     // Save to database and send response

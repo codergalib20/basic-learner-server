@@ -15,7 +15,7 @@ const animalsSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    path: {
+    slug: {
       type: String,
       required: true,
       trim: true,

@@ -2,13 +2,25 @@ const Grammer = require("../../../models/basic_learner/grammer.model");
 
 const createGrammer = async (req, res) => {
   try {
-    const data = await Grammer.create(req.body);
-    if (data) {
-      return res.status(200).json({
-        message: "Added a new grammer",
-        data,
-      });
+    const { grammer_name, name } = req.body;
+    let name_path = name.toLowerCase().replace(/[^a-zA-Z]/g, "-");
+    let grammer_name_path = grammer_name
+      .toLowerCase()
+      .replace(/[^a-zA-Z]/g, "-");
+    let path = name_path + "-" + grammer_name_path;
+    const exastingPath = await Grammer.findOne({ slug: path });
+    if (exastingPath) {
+      path = Math.floor(Math.random() * 1000) + "_" + path;
     }
+    const makeData = {
+      ...req.body,
+      slug: path,
+    };
+    const data = await Grammer.create(makeData);
+    res.status(201).json({
+      message: "Grammer Add successfully!",
+      data,
+    });
   } catch (err) {
     res.status(403).json({
       message: "That was server error!",
@@ -95,7 +107,26 @@ const deleteGrammer = async (req, res) => {
     });
   }
 };
-
+const getOneBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const data = await Grammer.findOne({ slug });
+    if (data) {
+      return res.status(200).json({
+        message: "Grammer Loaded",
+        data,
+      });
+    }
+    res.status(404).json({
+      error: "Data not found!",
+    });
+  } catch (error) {
+    res.status(404).json({
+      error: "Thare is server error",
+      err: error,
+    });
+  }
+};
 module.exports = {
   createGrammer,
   getAllGrammer,
@@ -103,4 +134,5 @@ module.exports = {
   updateGrammer,
   deleteGrammer,
   getAllGrammarTitle,
+  getOneBySlug,
 };

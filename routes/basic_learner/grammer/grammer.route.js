@@ -7,6 +7,7 @@ const {
   updateGrammer,
   deleteGrammer,
   getAllGrammarTitle,
+  getOneBySlug,
 } = require("./grammer.controller");
 
 router.route("/").post(createGrammer).get(getAllGrammer);
@@ -16,5 +17,5 @@ router
   .get(getAGrammer)
   .patch(updateGrammer)
   .delete(deleteGrammer);
-
+router.get("/slug/:slug", getOneBySlug);
 module.exports = router;
