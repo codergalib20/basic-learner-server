@@ -43,10 +43,8 @@ const getAllGrammer = async (req, res) => {
   }
 };
 const getAllGrammarTitle = async (req, res) => {
-  console.log(req.body);
   try {
     const data = await Grammer.find({ ...req.body });
-    console.log(data);
     res.status(200).json({
       message: "Loaded all grammer",
       data,

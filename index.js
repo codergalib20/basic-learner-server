@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const connectDB = require("./config/dbConnect");
 const colors = require("colors");
+const expressUpload = require("express-fileupload");
+const cloudinary = require("cloudinary").v2;
 const { logger, logEvents } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 // --------
@@ -25,6 +27,24 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 connectDB();
 colors.enable();
+// -------- FOR CLOUDINARY
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRATE,
+});
+// -------- FOR EXPRESS UPLOAD
+app.use(
+  expressUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // -------- STARTING ALL ROUTES FROM HERE
 // --------------
@@ -62,6 +82,9 @@ app.use(
   "/api/v1/animals",
   require("./routes/basic_learner/animales/animals.route")
 );
+
+// -------- FOR GLOBAL ROUTES
+app.use("/api/v1/upload", require("./routes/upload/image"));
 // -------- fOR 404 ROUTES ERROR
 // --------------
 // ---------------------
@@ -73,7 +96,6 @@ app.use(
 // --------
 // Not Found Or 404 error Page
 app.all("*", (req, res) => {
-  console.log(req);
   //   res.status(404);
   if (req.accepts("html")) {
     res.sendFile(path.join(__dirname, "views", "not.html"));
