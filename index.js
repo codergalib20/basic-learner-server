@@ -82,7 +82,14 @@ app.use(
   "/api/v1/animals",
   require("./routes/basic_learner/animales/animals.route")
 );
-
+app.use(
+  "/api/v1/flowers",
+  require("./routes/basic_learner/flowers/flowers.routes")
+);
+app.use(
+  "/api/v1/fruits",
+  require("./routes/basic_learner/fruits/fruite.routes")
+);
 // -------- FOR GLOBAL ROUTES
 app.use("/api/v1/upload", require("./routes/upload/image"));
 // -------- fOR 404 ROUTES ERROR

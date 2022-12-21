@@ -1,4 +1,5 @@
 const Vocabulary = require("../../../models/basic_learner/vocabulary.model");
+const slug = require("../../../utils/slug");
 
 // Create a new Vocabulary
 const addAVocabulary = async (req, res) => {
@@ -10,15 +11,11 @@ const addAVocabulary = async (req, res) => {
         message: "This vocabulary already added",
       });
     }
-
-    let path = vocabulary.toLowerCase().replace(/[^a-zA-Z]/g, "-");
-    const exastingSlug = await Vocabulary.findOne({ slug: path });
-    if (exastingSlug) {
-      path = Math.floor(Math.random() * 1000) + "_" + path;
-    }
+    const makeSlug = slug(vocabulary);
+    const count = await Vocabulary.countDocuments();
     const makeData = {
       ...req.body,
-      slug: path,
+      slug: `${count + 1}-${makeSlug}`,
     };
     const data = await Vocabulary.create(makeData);
     res.status(201).json({
@@ -96,5 +93,5 @@ module.exports = {
   addAVocabulary,
   getVocabulary,
   getOneBySlug,
-  getAllVocabluaryByPagination
+  getAllVocabluaryByPagination,
 };
