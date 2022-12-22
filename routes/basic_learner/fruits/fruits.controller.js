@@ -41,22 +41,22 @@ const getAllFruits = async (req, res) => {
   try {
     const { page, limit } = req.query;
     const fruits = await Fruit.find({})
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
+      .limit(Number(limit) * 1)
+      .skip((Number(page) - 1) * Number(limit))
       .exec();
     const count = await Fruit.countDocuments();
     res.status(401).json({
       message: "Loaded Fruits",
       data: {
         fruits,
-        totalPages: Math.ceil(count / limit),
-        currentPage: page,
+        totalPages: Math.ceil(count / Number(limit)),
+        currentPage: Number(page),
         totalFruit: count,
       },
     });
   } catch (err) {
     res.status(404).json({
-      message: "Network error occord",
+      message: "Network error occurred",
       err,
     });
   }

@@ -2,20 +2,20 @@ const express = require("express");
 const router = express.Router();
 const {
   createGrammer,
-  getAllGrammer,
-  getAGrammer,
-  updateGrammer,
+  addTagInGrammer,
+  getGrammerParent,
+  updateAGrammer,
+  getDraftGrammer,
   deleteGrammer,
-  getAllGrammarTitle,
   getOneBySlug,
+  getAllGrammer,
 } = require("./grammer.controller");
-
+// Create and Get
 router.route("/").post(createGrammer).get(getAllGrammer);
-router.route("/title").post(getAllGrammarTitle);
-router
-  .route("/:id")
-  .get(getAGrammer)
-  .patch(updateGrammer)
-  .delete(deleteGrammer);
+router.post("/tag/:id", addTagInGrammer);
+router.get("/grammer-parent", getGrammerParent);
+router.get("/status", getDraftGrammer);
+router.patch("/update/:id", updateAGrammer);
+router.delete("/:id", deleteGrammer);
 router.get("/slug/:slug", getOneBySlug);
 module.exports = router;

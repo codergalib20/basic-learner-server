@@ -1,2 +1,3 @@
 20221108	03:42:36	53548a7a-7657-4a9d-8348-71f6d0a4e290	Error: ENOENT: no such file or directory, stat 'C:\Users\coder\OneDrive\Desktop\basic learner\server\views\404.html'	GET	/asd	undefined
 20221204	20:58:28	92945e43-2ce6-4919-955a-f4a6e3edb9f7	SyntaxError: Unexpected token } in JSON at position 68	POST	/api/v1/birds	undefined
+20221222	19:07:21	6d7c6351-9278-49d2-86b7-64dcd82ba559	SyntaxError: Unexpected token } in JSON at position 73	POST	/api/v1/grammer	undefined

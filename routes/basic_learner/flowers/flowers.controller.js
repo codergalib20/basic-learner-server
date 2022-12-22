@@ -41,16 +41,16 @@ const getAllFlowers = async (req, res) => {
   try {
     const { page, limit } = req.query;
     const flowers = await Flower.find({})
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
+      .limit(Number(limit) * 1)
+      .skip((Number(page) - 1) * Number(limit))
       .exec();
     const count = await Flower.countDocuments();
     res.status(401).json({
       message: "Loaded flowers",
       data: {
         flowers,
-        totalPages: Math.ceil(count / limit),
-        currentPage: page,
+        totalPages: Math.ceil(count / Number(limit)),
+        currentPage: Number(page),
         totalFlower: count,
       },
     });
